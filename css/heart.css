@@ -1,0 +1,113 @@
+body{
+    margin: 0;
+    padding:0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0b1522;
+}
+
+.heart{
+    height: 70px;
+    width:70px;
+    background-blend-mode: normal;
+    background: #f20044;
+    position: relative;
+    transform: rotate(-45deg);
+    box-shadow: -10px 10px 90px white;
+
+    animation:heart 1s linear infinite, Colors  45s linear infinite
+    /*Shadows 45s linear infinite;*/
+
+}
+@keyframes Colors {
+    0%{
+        background-color:#f20044;
+    }
+    20%{
+        background-color: orange;
+    }
+    40%{
+        background-color:yellow;
+    }
+    60%{
+        background-color:green;
+    }
+    80%{
+        background-color: blue;
+    }
+    99%{
+        background-color: violet;
+    }
+    100%{
+        background-color:#f20044;
+    }
+
+}
+@keyframes Shadows {
+    0%{
+        box-shadow:-10px 10px 90px #f20044;
+    }
+    20%{
+        box-shadow:-10px 10px 90px orange;
+    }
+    40%{
+        box-shadow:-10px 10px 90px yellow;
+    }
+    60%{
+        box-shadow: -10px 10px 90px green;
+    }
+    80%{
+        box-shadow: -10px 10px 90px blue;
+    }
+    90%{
+        box-shadow:-10px 10px 90px violet;
+    }
+    100%{
+        background-color:#f20044;
+    }
+
+}
+
+@keyframes  heart{
+    0%{
+        transform: rotate(-45deg) scale(1.07);
+    }
+    80%{
+        transform: rotate(-45deg) scale(1.0);
+    }
+    100%{
+        transform: rotate(-45deg) scale(0.8);
+    }
+
+}
+.heart:before{
+    content:'';
+    position: absolute;
+    height: 70px;
+    width:70px;
+    background: #f20044;
+    top:-50%;
+    border-radius: 50px;
+    /*box-shadow: -10px -10px 90px  #f20044;*/
+    animation: Colors  45s linear infinite
+    /*Shadows 45s linear infinite;*/
+
+
+
+
+}.heart:after{
+     content:'';
+     position: absolute;
+     height: 70px;
+     width:70px;
+     background: #f20044;
+     right:-50%;
+     border-radius: 50px;
+     /*box-shadow: 10px 10px 90px  #f20044;*/
+     animation: Colors  45s linear infinite
+     /*Shadow 45s linear infinite;*/
+
+
+ }
