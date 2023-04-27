@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    getData();
+
+   async function getData(){
+       const response = await fetch('Nasa.csv');
+       const data= await response.text();
+       // console.log(data);
+
+       const table= data.split(/\n/).slice(1);
+       table.forEach(row=>{
+           const column =row.split(',');
+           const year =column[0];
+           const temp = column[1];
+
+           console.log(year,temp)
+           // console.log(row)
+       })
+
+       // console.log(row)
+
+   }
+</script>
+</body>
+</html>
