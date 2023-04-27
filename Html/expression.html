@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //Meta Character
+    // \d = 0-9 digits
+    //   \d\d\d-\d\d\d-\d\d\d\d
+
+
+    // * = 0 or more * known as a wild card followed by value
+
+    //.* means all
+    // \[.*?] -> makes the .* not greedy and only looks for everything inside bracket
+
+    //SINGLE CHARACTER
+    // \d = 0-9 digits
+    // \w -> means word  A-Z , a-z, 0-9
+    // \s -> any white space
+    // . -> any character
+    // \W -> NOT word
+    // \S ->NOT whitespace
+    // \D -> NOT digits
+
+
+
+
+    /// QUALIFIERS -> Modify previous character into regular expression
+    //* -> 0 or more
+    // +-> 1 or more
+    // ? -> 0 or 1 optionally
+    // {}-> { min,max}, {n}
+
+
+    ///Position
+    //^-> beginning
+    //$-> end
+    // \b -> word bounder
+
+    //character classes-> stuff that appear between []
+    //[abc][-.]
+    //dot inside of square brackets become a literal character
+
+    //Alternation= or
+    // \. ->means literal dot
+    // Dash (-) -> if dash is not first character it will look between two characters
+    //Carrot [^]-> any character that is inside square bracket will NOT be searched for
+
+    // for a phone number regex would be
+    // \(?\d{3}[-.)]\d{3}[-.]\d{4}
+    // escape parenthesis  3 digit with dash or dot  or parenthesis followed by three digits dash or dot followed by 4 digits
+
+    // \b[A-Za-z]{4}\b all for letter character
+
+    // ]\b[A-Z] [a-z]+ \b all capitalized words followed by a lower case
+
+    //(net|com) -> OR symbol
+
+    // [\w.]+@\w+\.(net|com|edu)
+
+
+
+    //Capturing Groups
+
+    //() capture individually or separates into  a new  sub group
+
+    //$1 means group 1
+    // \1
+    // \(?(\d{3}[-.)])\d{3}[-.]\d{4}
+    //$1-xxx-xxxx will replace all but the group I put in parentheses
+
+
+    //\[(.*?)]\((http.*?)\)
+
+    //<a href="2">$1</a>>
+
+    //back reference
+
+    // (\w+)\s\1
+    // will match any words that are the same next to it
+    // \b(\w+)\s\1\b
+    // will match the words only not just the characters
+
+
+    // let s =/\d{3}/
+    let s =/^\d{3}$/
+    console.log(s.test("hello"));// should be false
+    console.log(s.test("123ABC"));// first example true second false
+    console.log(s.test("123"));//should be true
+
+
+    let k= "My cat Azazel is the best!"
+    let h = /Aza/
+    let r = /\w+/;
+    let y = /[a-z]+/g;
+    let d = /[a-z]+/gi;
+    console.log(h.test(k));// should return true
+    console.log(k.match(r))// brings the first match
+    console.log(k.match(h));// should return an array of the word hatred [Aza]
+    console.log(k.match(y));// adds only lowercase words into an array
+    console.log(k.match(d));// adds every word  into an array
+
+
+    //Flags are a way to modify the behavior of a literary expression
+
+    // g -> global
+    // i -> case insensitive
+
+    // if you don't use a global class () will capture the sub group if global used excet function needs to be used
+
+
+
+
+    //
+    // let textfield;
+    // let output;
+    // let submit;
+    //
+    // function setup(){
+    //     noCanvas();
+    //     textfield = select("#input")
+    //     textfield.changed(newText)
+    //     output = select('#output')
+    //     submit =submit("#submit")
+    //     submit.mousePressed(newText)
+    // }
+    // function newText(){
+    //     let x = textfield.value()
+    // }
+
+
+
+
+</script>
+
+</body>
+</html>

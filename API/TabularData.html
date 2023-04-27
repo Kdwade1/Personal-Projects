@@ -7,7 +7,8 @@
 <body>
 
 <script>
-    getData();
+    // getData();
+    getPokemon();
 
    async function getData(){
        const response = await fetch('Nasa.csv');
@@ -26,6 +27,21 @@
 
        // console.log(row)
 
+   }
+   async function getPokemon(){
+       const response = await fetch('Pokemon.csv');
+       const data = await response.text();
+       console.log(data)
+
+       const table = data.split(/\n/).splice(1);
+       table.forEach(row =>{
+           const column =row.split(',')
+           const name = column[1]
+           const type = column[2]
+           const type2= column[3]
+           console.log(name, type,type2)
+
+       })
    }
 </script>
 </body>
