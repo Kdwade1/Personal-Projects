@@ -26,8 +26,6 @@
     // \D -> NOT digits
 
 
-
-
     /// QUALIFIERS -> Modify previous character into regular expression
     //* -> 0 or more
     // +-> 1 or more
@@ -62,12 +60,11 @@
     // [\w.]+@\w+\.(net|com|edu)
 
 
-
     //Capturing Groups
 
-    //() capture individually or separates into  a new  sub group
+    //()-> capture individually or separates into  a new  sub group
 
-    //$1 means group 1
+    //$1-> means group 1
     // \1
     // \(?(\d{3}[-.)])\d{3}[-.]\d{4}
     //$1-xxx-xxxx will replace all but the group I put in parentheses
@@ -86,22 +83,27 @@
 
 
     // let s =/\d{3}/
-    let s =/^\d{3}$/
+    let s = /^\d{3}$/
     console.log(s.test("hello"));// should be false
     console.log(s.test("123ABC"));// first example true second false
     console.log(s.test("123"));//should be true
 
 
-    let k= "My cat Azazel is the best!"
+    let k = "My cat Azazel, is the best!"
     let h = /Aza/
     let r = /\w+/;
     let y = /[a-z]+/g;
     let d = /[a-z]+/gi;
+    let expres =/[.,?!]/
+    let nonWords =/(\W+)/ //-> saves all elements into an array
     console.log(h.test(k));// should return true
     console.log(k.match(r))// brings the first match
     console.log(k.match(h));// should return an array of the word hatred [Aza]
     console.log(k.match(y));// adds only lowercase words into an array
     console.log(k.match(d));// adds every word  into an array
+    console.log(k.split(/[,\s/]+/)); // splits them by white space or comma and returns the results into an array
+
+    let phone = /\(?\d{3}[-.)]\d{3}[-.]\d{4}/
 
 
     //Flags are a way to modify the behavior of a literary expression
@@ -111,7 +113,14 @@
 
     // if you don't use a global class () will capture the sub group if global used excet function needs to be used
 
+    //exec returns an array to  execute string
 
+    // let result;
+    // while (let result = r.exec(d){  -> will run until null
+    // functionality here
+    // }
+    // str.split ( regular expression)
+    //str. replace(regular expression , string or function)
 
 
     //
@@ -130,8 +139,6 @@
     // function newText(){
     //     let x = textfield.value()
     // }
-
-
 
 
 </script>
