@@ -1,45 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src=" https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js "></script>"
+
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Pokemon</title>
 </head>
 <body>
+<canvas id="chart" width="800" height="400"></canvas>
+
 
 <script>
+    const xlabel = [];
+    const typing=[];
+
     // getData();
-    getPokemon();
+    chartIt();
+   async function chartIt() {
+       await getPokemon();
+        const ctx = document.getElementById('chart');
 
-   async function getData(){
-       const response = await fetch('Nasa.csv');
-       const data= await response.text();
-       // console.log(data);
 
-       const table= data.split(/\n/).slice(1);
-       table.forEach(row=>{
-           const column =row.split(',');
-           const year =column[0];
-           const temp = column[1];
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: xlabel,
+                datasets: [{
+                    fill:false,
+                    label: 'Pokemon total base stat\'s,',
+                    data: typing,
+                    borderWidth: 1
+                }]
+            }
 
-           console.log(year,temp)
-           // console.log(row)
-       })
+        });
+    }
 
-       // console.log(row)
-
-   }
+   // async function getData(){
+   //     const response = await fetch('Nasa.csv');
+   //     const data= await response.text();
+   //     // console.log(data);
+   //
+   //     const table= data.split(/\n/).slice(1);
+   //     table.forEach(row=>{
+   //         const column =row.split(',');
+   //         const year =column[0];
+   //         const temp = column[1];
+   //
+   //         console.log(year,temp)
+   //         // console.log(row)
+   //     })
+   //
+   //     // console.log(row)
+   //
+   // }
    async function getPokemon(){
        const response = await fetch('Pokemon.csv');
        const data = await response.text();
-       console.log(data)
+       // console.log(data)
 
        const table = data.split(/\n/).splice(1);
        table.forEach(row =>{
            const column =row.split(',')
            const name = column[1]
            const type = column[2]
+           const total = column[4]
+           xlabel.push(name)
+           typing.push(total)
            const type2= column[3]
-           console.log(name, type,type2)
+           // console.log(name, type,type2)
 
        })
    }
