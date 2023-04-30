@@ -7,18 +7,31 @@
     <title>Pokemon</title>
 </head>
 <body>
+<div>
 <canvas id="chart" width="800" height="400"></canvas>
+</div>
+<div>
+<canvas id="healthChart" width="800" height="400"></canvas>
+</div>
+<div>
+<canvas id="attackChart" width="800" height="400"></canvas>
+</div>
 
 
 <script>
     const xlabel = [];
     const typing=[];
+    const hp =[]
+    const attack=[]
+    const defense=[]
 
     // getData();
     chartIt();
    async function chartIt() {
        await getPokemon();
         const ctx = document.getElementById('chart');
+        const htx= document.getElementById('healthChart');
+        const atx= document.getElementById('attackChart');
 
 
         new Chart(ctx, {
@@ -26,14 +39,33 @@
             data: {
                 labels: xlabel,
                 datasets: [{
+                    fill: false,
+                    label: 'Pokemon HP,',
+                    backgroundColor: "blue",
+                    data: hp,
+                    borderWidth: 3
+                },
+                    {fill: false,
+                        label: 'Pokemon Attack,',
+                        backgroundColor: "red",
+                        data: attack,
+                        borderWidth: 3},
+                    {
                     fill:false,
                     label: 'Pokemon total base stat\'s,',
-                    data: typing,
-                    borderWidth: 1
+                    backgroundColor:"gold",
+                    data: defense,
+                    borderWidth: 3
                 }]
             }
-
         });
+
+
+
+
+
+
+
     }
 
    // async function getData(){
@@ -65,8 +97,14 @@
            const name = column[1]
            const type = column[2]
            const total = column[4]
+           const health = column[5]
+           const aStat= column [6]
+           const dStat = column[7]
            xlabel.push(name)
            typing.push(total)
+           attack.push(aStat)
+           hp.push(health)
+           defense.push(dStat)
            const type2= column[3]
            // console.log(name, type,type2)
 
