@@ -1,34 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Data</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Data Selfie App</title>
 </head>
 <body>
-<h1> DATA SELFIE APP</h1>
-<h5> hello</h5>
-
 <script>
-    if('geolocation'in navigator){
-        console.log("GeoLocation Available")
-        navigator.geolocation.getCurrentPosition((position) =>{
-            document.getElementById('lat').textContent=position.coords.latitude;
-            document.getElementById('long').textContent=position.coords.longitude;
+    if ("geolocation" in navigator) {
+        console.log("geolocation available");
+        navigator.geolocation.getCurrentPosition(async (position) => {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+            document.getElementById("latitude").textContent = lat;
+            document.getElementById("longitude").textContent = lon;
+            // console.log(position);
 
-            console.log(position)
-            console.log(position.coords.latitude)
-            console.log(position.coords.longitude)
-        })
-
-    }else{
-        console.log("Not Available ")
-
-
+            const data = { lat, lon };
+            const options = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            };
+            const response = await fetch("/api", options);
+            const json = await response.json();
+            console.log(json);
+        });
+    } else {
+        console.log("geolocation not available");
     }
 </script>
-<p>Latitude:<span id="lat"></span><br>
-   Longitude: <span id="long"></span>
-</p>
 
+<h1>Data Selfie App</h1>
+<p>
+    latitude: <span id="latitude"></span>&deg;<br />
+    longitude: <span id="longitude"></span>&deg;
+</p>
 </body>
 </html>

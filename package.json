@@ -17,10 +17,6 @@
   ],
   "author": "Kelvin Wade",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Kdwade1/Personal-Projects/issues"
-  },
-  "homepage": "https://github.com/Kdwade1/Personal-Projects#readme",
   "dependencies": {
     "express": "^4.18.2"
   }
