@@ -1,8 +1,8 @@
 class Player extends Sprite {
     constructor({
-                    collisionBlocks = [], imageSrc, frameRate
+                    collisionBlocks = [], imageSrc, frameRate,animations,loop
                 }) {
-        super({imageSrc, frameRate})
+        super({imageSrc, frameRate,animations,loop})
         this.position = {
             x: 200,
             y: 200
@@ -18,7 +18,7 @@ class Player extends Sprite {
         }
         this.gravity = 1
         this.collisionBlocks = collisionBlocks
-        console.log(this.collisionBlocks)
+        // console.log(this.collisionBlocks)
     }
 
     // draw() {
@@ -40,7 +40,48 @@ class Player extends Sprite {
         this.checkForVerticalCollision()
 
 
+
+
+
 //checks for vertical collisions
+
+
+    }
+    handleInput(keys){
+        if(this.preventInput)return
+        this.velocity.x=0
+
+        if (keys.d.pressed) {
+            this.switchSprite('runRight')
+            this.velocity.x = 4
+            this.lastDirection ='right'
+        }
+        else if (keys.a.pressed) {
+            this.switchSprite('runLeft')
+
+            this.velocity.x = -4
+            this.lastDirection="left"
+
+        }
+        else {
+            if(this.lastDirection ==='left') {
+                this.switchSprite('idleLeft')
+            }
+            else{
+                this.switchSprite('idleRight')
+            }
+        }
+
+    }
+    switchSprite(name){
+        if(this.image === this.animations[name].image)return
+        this.currentFrame =0
+        this.image=this.animations[name].image
+        this.frameRate = this.animations[name].frameRate
+        this.frameBuffer = this.animations[name].frameBuffer
+        this.loop =this.animations[name].loop
+        this.currentAnimation =this.animations[name]
+
 
 
     }
