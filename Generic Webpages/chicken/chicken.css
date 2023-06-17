@@ -48,5 +48,16 @@ header {
     color:red;
     font-weight: 500;
     margin-left: 40px;
+    transition:5s;
 
+}
+.navbar:after{
+     content:'';
+    position: absolute;
+
+
+}
+.navbar .login-btn:hover{
+    background: white;
+    color:gray
 }
