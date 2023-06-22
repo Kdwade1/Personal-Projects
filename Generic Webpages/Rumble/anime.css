@@ -1,0 +1,9 @@
+body{
+    display: flex;
+    background-size:contain;
+
+
+    background: url("img/img.png") no-repeat center;
+
+
+}
