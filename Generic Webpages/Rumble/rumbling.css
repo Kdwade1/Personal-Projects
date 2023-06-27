@@ -1,0 +1,20 @@
+/*@import url(https://fonts.googleapis.com/css2?family=Anton&display=swap")*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url("img/img_1.png") no-repeat center -50em;;
+
+}
+
+.result_image img {
+    width: 100px;
+}
