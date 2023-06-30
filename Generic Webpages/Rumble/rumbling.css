@@ -14,7 +14,22 @@ body {
     background: url("img/img_1.png") no-repeat center -50em;;
 
 }
+.container{
+    padding:2rem 7rem;
+    border-radius:14px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+.result_image{
+    display:flex;
+    column-gap: 7rem;
+}
 
 .result_image img {
     width: 100px;
+}
+.user_input img{
+    transform:rotate(90deg);
+}
+.cpu_result img{
+    transform:rotate(-90deg);
 }
