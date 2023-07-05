@@ -11,7 +11,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url("img/img_1.png") no-repeat center -50em;;
+    background:  url("img/img_1.png") no-repeat center -50em;
 
 }
 .container{
@@ -49,6 +49,9 @@ body {
     /*transition: opacity 0.3s ease;*/
 }
 .option_images:hover{
+    opacity: 1;
+}
+.option_images:active{
     opacity: 1;
 }
 .optional_image img{
