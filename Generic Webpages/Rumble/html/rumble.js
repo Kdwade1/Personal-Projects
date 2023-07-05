@@ -1,5 +1,3 @@
-
-
 document.addEventListener("DOMContentLoaded", function() {
     const gameContainer = document.querySelector('.container');
     const userResult = document.querySelector('.user_input img');
@@ -17,47 +15,39 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             });
 
-            let imageSrc = e.target.querySelector("img").src;
+            gameContainer.classList.add("start");
 
-            userResult.src = imageSrc
+            setTimeout(() => {
+                gameContainer.classList.remove("start");
 
+                let imageSrc = image.querySelector("img").src;
+                userResult.src = imageSrc;
 
-            let randomNumber = Math.floor(Math.random()* 3)
+                let randomNumber = Math.floor(Math.random() * 3);
+                let cpuImages = ["../img/rock.png", "../img/Paper.png", "../img/scissor.png"];
+                cpuResult.src = cpuImages[randomNumber];
 
+                let cpuValue = ['R', 'P', 'S'][randomNumber];
+                let userValue = ['R', 'P', 'S'][index];
 
-            let cpuImages = ["../img/rock.png", "../img/Paper.png", "../img/scissor.png"];
+                let outcome = {
+                    RR: 'Draw',
+                    RP: 'CPU',
+                    RS: 'User',
+                    PP: 'Draw',
+                    PS: 'CPU',
+                    PR: 'User',
+                    SS: 'Draw',
+                    SR: 'CPU',
+                    SP: 'User'
+                };
 
-            cpuResult.src= cpuImages[randomNumber]
+                let outcomeValue = outcome[userValue + cpuValue];
 
+                result.textContent = userValue === cpuValue ? "Match Draw" : `${outcomeValue} Won!!`;
 
-
-            let cpuValue=["R","P","S"][randomNumber]
-
-            let userValue =["R","P","S"][index]
-
-            let outcome={
-                RR: 'Draw',
-                RP:"CPU",
-                RS:"User",
-                PP:"DRAW",
-                PS:"CPU",
-                PR:"User",
-                SS:"Draw",
-                SR:"CPU",
-                SP:"USER"
-
-            }
-
-            let outcomeValue=outcome[userValue+cpuValue]
-
-
-            result.textContent=userValue ===cpuValue ? "Match Draw" : `${outcomeValue} Won!!`
-
-
-            console.log(cpuValue)
-
-
-
+                console.log(cpuValue);
+            }, 2500);
         });
     });
 });
