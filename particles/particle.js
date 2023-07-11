@@ -12,11 +12,17 @@ ctx.stroke();
 
 
 class Particle {
+
     constructor(effect) {
         this.effect = effect;
-        this.x = Math.random() * this.effect.width;
-        this.y = Math.random() * this.effect.height;
         this.radius = 14;
+        this.x = this.radius + Math.random() * (this.effect.width - this.radius * 2);
+        this.y = this.radius + Math.random() * (this.effect.height - this.radius * 2);
+        this.vx = Math.random() * 4 - 2; // Random velocity between -1 and 1
+        this.vy = Math.random()* 4-2
+
+
+
     }
 
     draw(context) {
@@ -28,6 +34,15 @@ class Particle {
         context.stroke();
 
     }
+    update(){
+        this.x+= this.vx
+        if(this.x>this.effect.width -this.radius|| this.x< this.radius)this.vx *=-1
+
+
+        this.y +=this.vy
+        if(this.y>this.effect.width -this.radius|| this.y< this.radius)this.vy *=-1
+    }
+
 }
 
 class Effect {
@@ -52,6 +67,7 @@ class Effect {
     handleParticles(context) {
         this.particles.forEach(particle => {
             particle.draw(context)
+            particle.update();
         })
     }
 
@@ -60,8 +76,14 @@ class Effect {
 const effect = new Effect(canvas)
 console.log(effect)
 
-effect.handleParticles(ctx)
+
 
 function animate() {
-
+    // ctx.clearRect(0,0,canvas.width,canvas.height)
+    effect.handleParticles(ctx)
+    requestAnimationFrame(animate)
 }
+animate()
+
+
+
